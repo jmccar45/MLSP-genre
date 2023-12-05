@@ -18,16 +18,18 @@ pop = (features30sec(features30sec.Var61 == 8, :));
 reggae = (features30sec(features30sec.Var61 == 9, :));
 rock = (features30sec(features30sec.Var61 == 10, :));
 
-data(:,:,1) = table2array(blues(:,3:59));
-data(:,:,2) = table2array(classical(:,3:59));
-data(:,:,3) = table2array(country(:,3:59));
-data(:,:,4) = table2array(disco(:,3:59));
-data(:,:,5) = table2array(hiphop(:,3:59));
-data(:,:,6) = table2array(jazz(:,3:59));
-data(:,:,7) = table2array(metal(:,3:59));
-data(:,:,8) = table2array(pop(:,3:59));
-data(:,:,9) = table2array(reggae(:,3:59));
-data(:,:,10) = table2array(rock(:,3:59));
+x = 20;
+y = 59;
+data(:,:,1) = table2array(blues(:,x:y));
+data(:,:,2) = table2array(classical(:,x:y));
+data(:,:,3) = table2array(country(:,x:y));
+data(:,:,4) = table2array(disco(:,x:y));
+data(:,:,5) = table2array(hiphop(:,x:y));
+data(:,:,6) = table2array(jazz(:,x:y));
+data(:,:,7) = table2array(metal(:,x:y));
+data(:,:,8) = table2array(pop(:,x:y));
+data(:,:,9) = table2array(reggae(:,x:y));
+data(:,:,10) = table2array(rock(:,x:y));
 
 % number of classes 
 n = 10;
@@ -79,8 +81,8 @@ avg_class9 = mean(train_featureData(:,:,9));
 avg_class10 = mean(train_featureData(:,:,10));
 
 meanClasses = [avg_class1; avg_class2; avg_class3; avg_class4; avg_class5; avg_class6; avg_class7; avg_class8; avg_class9; avg_class10]';
-
-S = zeros(57,57,10);
+n = y-x +1;
+S = zeros(n,n,10);
 S(:,:,1) = cov(train_featureData(:,:,1));
 S(:,:,2) = cov(train_featureData(:,:,2));
 S(:,:,3) = cov(train_featureData(:,:,3));
